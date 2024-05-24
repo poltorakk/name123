@@ -1,6 +1,6 @@
 <template>
   <div class="main-calendar">
-    <span class="main-calendar__title text-normal-regular">{{title}}</span>
+    <span class="main-calendar__title text-normal-regular">{{ title }}</span>
     <button @click="toggleCalendar" class="main-calendar__btn-calendar">
       <div class="main-calendar__date-and-icon">
         <div class="main-calendar__icon"></div>
@@ -12,7 +12,8 @@
             {{ formatDate(selectedDates.start) }} - DD MMM YYYY
           </span>
           <span v-if="selectedDates.start && selectedDates.end">
-            {{ formatDate(selectedDates.start) }} - {{ formatDate(selectedDates.end) }}
+            {{ formatDate(selectedDates.start) }} -
+            {{ formatDate(selectedDates.end) }}
           </span>
         </div>
       </div>
@@ -22,27 +23,59 @@
       <div class="main-calendar__header">
         <span class="text-normal-semi-bold">{{ currentMonth }}</span>
         <div class="main-calendar__header-chevron">
-          <img class="main-calendar__chevron-up" :src="require('@/assets/icons/Chevron up.svg')" @click="prevMonth">
-          <img class="main-calendar__chevron-down" :src="require('@/assets/icons/ChevronDown.svg')" @click="nextMonth">
+          <img
+            class="main-calendar__chevron-up"
+            :src="require('@/assets/icons/Chevron up.svg')"
+            @click="prevMonth"
+          />
+          <img
+            class="main-calendar__chevron-down"
+            :src="require('@/assets/icons/ChevronDown.svg')"
+            @click="nextMonth"
+          />
         </div>
       </div>
-      <div class="main-calendar__days text-normal-regular" v-if="days.length !== 0">
-        <div class="main-calendar__week-days text-normal-regular" v-for="(day, index) in weekDaysAbbreviated"
-          :key="index">
+      <div
+        class="main-calendar__days text-normal-regular"
+        v-if="days.length !== 0"
+      >
+        <div
+          class="main-calendar__week-days text-normal-regular"
+          v-for="(day, index) in weekDaysAbbreviated"
+          :key="index"
+        >
           {{ day }}
         </div>
-        <div v-for="(day, index) in days" :key="index" class="main-calendar__day text-normal-regular"
-          @click="!day.isPrevMonth ? selectDate(day.day, index) : () => { };" :class="['day', !!selectedDates.start ? !day.isPrevMonth &&
-            selectedDates.start.getDate() === day.day && selectedDates.start.getMonth() === currentMonthIndex
-            && selectedDates.start.getYear() + 1900 === currentYear
-            ? 'main-calendar__selected-day' : 'main-calendar__day' : 'main-calendar__day ',
-            !!selectedDates.end ? !day.isPrevMonth && selectedDates.end.getDate() === day.day
-              && selectedDates.end.getMonth() === currentMonthIndex && selectedDates.end.getYear() + 1900 === currentYear
-              ? 'main-calendar__selected-day' : 'main-calendar__day' : 'main-calendar__day '
-            , {
-              'main-calendar__prev-month-day text-normal-regular': day.isPrevMonth,
-              'main-calendar__day text-normal-regular': !day.isPrevMonth
-            }]">
+        <div
+          v-for="(day, index) in days"
+          :key="index"
+          class="main-calendar__day text-normal-regular"
+          @click="!day.isPrevMonth ? selectDate(day.day, index) : () => {}"
+          :class="[
+            'day',
+            !!selectedDates.start
+              ? !day.isPrevMonth &&
+                selectedDates.start.getDate() === day.day &&
+                selectedDates.start.getMonth() === currentMonthIndex &&
+                selectedDates.start.getYear() + 1900 === currentYear
+                ? 'main-calendar__selected-day'
+                : 'main-calendar__day'
+              : 'main-calendar__day ',
+            !!selectedDates.end
+              ? !day.isPrevMonth &&
+                selectedDates.end.getDate() === day.day &&
+                selectedDates.end.getMonth() === currentMonthIndex &&
+                selectedDates.end.getYear() + 1900 === currentYear
+                ? 'main-calendar__selected-day'
+                : 'main-calendar__day'
+              : 'main-calendar__day ',
+            {
+              'main-calendar__prev-month-day text-normal-regular':
+                day.isPrevMonth,
+              'main-calendar__day text-normal-regular': !day.isPrevMonth,
+            },
+          ]"
+        >
           {{ day.day }}
         </div>
       </div>
@@ -51,14 +84,14 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed } from "vue";
 
 export default {
   name: "CalendarInput",
   props: {
     title: {
       type: String,
-      default: ''
+      default: "",
     },
   },
   setup() {
@@ -69,21 +102,39 @@ export default {
     const selectedDates = ref({ start: null, end: null });
 
     const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
 
     const daysInMonth = computed(() => {
-      return new Date(currentYear.value, currentMonthIndex.value + 1, 0).getDate();
+      return new Date(
+        currentYear.value,
+        currentMonthIndex.value + 1,
+        0
+      ).getDate();
     });
     // Создаем массив сокращенных названий дней недели
-    const weekDaysAbbreviated = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+    const weekDaysAbbreviated = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
     const days = computed(() => {
-
-      const firstDayOfMonth = new Date(currentYear.value, currentMonthIndex.value, 1).getDay() - 1;
+      const firstDayOfMonth =
+        new Date(currentYear.value, currentMonthIndex.value, 1).getDay() - 1;
       // День недели первого дня текущего месяца
-      const prevMonthDays = new Date(currentYear.value, currentMonthIndex.value, 0).getDate();
+      const prevMonthDays = new Date(
+        currentYear.value,
+        currentMonthIndex.value,
+        0
+      ).getDate();
       // Количество дней предыдущего месяца
       const daysArray = [];
 
@@ -139,18 +190,27 @@ export default {
     };
 
     const selectDate = (day) => {
-
-      const selectedDate = new Date(`${day} ${months[currentMonthIndex.value].substring(0, 3)} ${currentYear.value}`);
+      const selectedDate = new Date(
+        `${day} ${months[currentMonthIndex.value].substring(0, 3)} ${
+          currentYear.value
+        }`
+      );
       if (!selectedDates.value.start) {
         selectedDates.value.start = selectedDate; // Установка начальной даты
       } else if (!selectedDates.value.end) {
         selectedDates.value.end = selectedDate; // Установка конечной даты
 
         if (selectedDates.value.end < selectedDates.value.start) {
-          [selectedDates.value.start, selectedDates.value.end] = [selectedDates.value.end, selectedDates.value.start];
+          [selectedDates.value.start, selectedDates.value.end] = [
+            selectedDates.value.end,
+            selectedDates.value.start,
+          ];
         } // Обмен значениями, если конечная дата раньше начальной
 
-        if (selectedDates.value.start.getTime() === selectedDates.value.end.getTime()) {
+        if (
+          selectedDates.value.start.getTime() ===
+          selectedDates.value.end.getTime()
+        ) {
           selectedDates.value.start = null;
           selectedDates.value.end = null;
         }
@@ -172,10 +232,9 @@ export default {
       formatDate,
       weekDaysAbbreviated,
       currentMonthIndex,
-      currentYear
+      currentYear,
     };
   },
-
 };
 </script>
 
@@ -199,7 +258,7 @@ export default {
     justify-content: center;
     align-items: stretch;
   }
-&:hover &__text{
+  &:hover &__text {
     color: var(--letters);
   }
 
@@ -311,7 +370,7 @@ export default {
     height: 20px;
     width: 20px;
     cursor: default;
-    mask-image: url('@/assets/icons/Calendar.svg');
+    mask-image: url("@/assets/icons/Calendar.svg");
     background: var(--yellow-gold-stripe);
     mask-size: 20px;
   }
@@ -319,7 +378,7 @@ export default {
   &__chevron-down2 {
     height: 12px;
     width: 12px;
-    mask-image: url('@/assets/icons/ChevronDown.svg');
+    mask-image: url("@/assets/icons/ChevronDown.svg");
     background: var(--lines);
     mask-size: 12px;
     gap: 5px;
@@ -330,4 +389,3 @@ export default {
   }
 }
 </style>
-  

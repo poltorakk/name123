@@ -7,48 +7,58 @@ const AddInput = defineAsyncComponent(() => import("@/components/AddInput"));
 const IntTextInput = defineAsyncComponent(() =>
   import("@/components/IntTextInput")
 );
-const CardInput = defineAsyncComponent(() =>
-  import("@/components/CardInput")
+const CardInput = defineAsyncComponent(() => import("@/components/CardInput"));
+const DropdownImg = defineAsyncComponent(() =>
+  import("@/components/DropdownImg")
 );
 
 const DropOptions = ["Онлайн"];
 </script>
 <template>
-    <div class="allFormStyle">
-  <div class="titleForm text-normal-regular">Оформить заказ</div>
-  <div class="formStyleDiv">
-    <form class="formStyle">
+  <div class="allFormStyle">
+    <div class="titleForm text-normal-regular">Оформить заказ</div>
+    <div class="formStyleDiv">
+      <form class="formStyle">
+        <br /><br />
 
-      <br /><br />
-      <IntTextInput placeholder="+7-ххх-ххх-ххх" Inputype="text" title="Телефон"></IntTextInput>
-      
-  
-      <div class="formStyle__countTime">
-      <AddInput></AddInput>
-      <CardInput 
-        title="Время аренды"
-        placeholder="Выбери время" 
-        CardInputTime="true">
-      </CardInput>
-      
+        <DropdownImg
+          buttonTextProp="Любая газель"
+          buttonTextProp2="Реактивная подача 15 мин"
+          :options="DropOptions"
+          showIcon="true"
+          icon="Asset.svg"
+        ></DropdownImg>
+        <div class="formStyle__countTime">
+          <AddInput></AddInput>
+          <CardInput
+            title="Время аренды"
+            placeholder="Выбери время"
+            CardInputTime="true"
+          >
+          </CardInput>
+        </div>
+        <div class="formStyle__payDay">
+          <CardInput title="Сегодня" placeholder="Ближайшее"> </CardInput>
+          <DropdownMenu
+            buttonTextProp="Наличные"
+            :options="DropOptions"
+          ></DropdownMenu>
+        </div>
+
+        <div class="formStyle__submitDiv">
+          <IntTextInput
+            placeholder="+7-ххх-ххх-ххх"
+            Inputype="text"
+            title="Телефон"
+          ></IntTextInput>
+          <SummaryButton></SummaryButton>
+        </div>
+      </form>
     </div>
-    <div class="formStyle__payDay">
-      <CardInput 
-        title="Сегодня"
-        placeholder="Ближайшее" >
-      </CardInput>
-      <DropdownMenu
-        buttonTextProp="Наличные"
-        :options="DropOptions"
-      ></DropdownMenu>
-      </div>  
-    </form>
-  </div>
   </div>
 </template>
 <style lang="scss" scoped>
-.allFormStyle{
-    width: 40%;
+.allFormStyle {
 }
 .formStyleDiv {
   background-color: var(--fkwhite);
@@ -76,10 +86,20 @@ const DropOptions = ["Онлайн"];
     gap: 5px;
     margin: 4px;
   }
-  &__payDay{align-items: center;
+  &__payDay {
+    align-items: center;
     display: flex;
     gap: 5px;
-    margin: 4px;}
+    margin: 4px;
+  }
+  &__submitDiv {
+    background: linear-gradient(to top, rgba(119, 138, 57, 0.5)
+, var(--white), rgba(119, 138, 57, 0.5)
+);
+    border-radius: 15px;
+    border: 1px solid var(--action);
+    padding: 20px 24px;
+  }
 }
 .titleForm {
   display: flex;

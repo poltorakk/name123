@@ -3,19 +3,22 @@
   <SeparatyLine></SeparatyLine>
   <SliderBar></SliderBar>
   <OrderForm></OrderForm>
-  <br>
-  <br>
+  <br />
+  <br />
   <AdditionalSecondaryButton></AdditionalSecondaryButton>
-  <br>
+  <br />
   <CalendarInput></CalendarInput>
   <SearchInput></SearchInput>
 
+  <FooterComponent></FooterComponent>
 </template>
 
 <script setup>
 import { defineAsyncComponent } from "vue";
 import StylePages from "@/components/StylePages";
 import SliderBar from "@/pages/MainPages/SliderBar";
+import FooterComponent from "@/components/FooterComponent";
+
 const SeparatyLine = defineAsyncComponent(() =>
   import("@/components/SeparatyLine")
 );

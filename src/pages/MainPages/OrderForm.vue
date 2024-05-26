@@ -1,4 +1,5 @@
 <script setup>
+import CalendarSelect from "@/components/CalendarSelect.vue";
 import SummaryButton from "@/components/SummaryButton.vue";
 import { defineAsyncComponent } from "vue";
 const DropdownMenu = defineAsyncComponent(() =>
@@ -8,14 +9,13 @@ const AddInput = defineAsyncComponent(() => import("@/components/AddInput"));
 const IntTextInput = defineAsyncComponent(() =>
   import("@/components/IntTextInput")
 );
-const CardInput = defineAsyncComponent(() => import("@/components/CardInput"));
 const DropdownImg = defineAsyncComponent(() =>
   import("@/components/DropdownImg")
 );
 const CardAdress = defineAsyncComponent(() =>
   import("@/components/CardAdress")
 );
-const DropOptions = ["Онлайн"];
+const DropOptions = ["Онлайн", "Наличные"];
 </script>
 <template>
   <div class="allFormStyle">
@@ -35,17 +35,27 @@ const DropOptions = ["Онлайн"];
         ></DropdownImg>
         <div class="formStyle__countTime">
           <AddInput></AddInput>
-          <CardInput
-            title="Время аренды"
-            placeholder="Выбери время"
+          <CalendarSelect
+            computedTitle="Время аренды"
+            placeholderText="Выбери время"
             CardInputTime="true"
+            buttonType="default"
+            buttonSize="large"
+            icon="Time.svg"
           >
-          </CardInput>
+          </CalendarSelect>
         </div>
         <div class="formStyle__payDay">
-          <CardInput title="Сегодня" placeholder="Ближайшее"> </CardInput>
+          <CalendarSelect
+            computedTitle="Сегодня"
+            placeholderText="Ближайшее"
+            buttonType="default"
+            buttonSize="large"
+            icon="Time.svg"
+          >
+          </CalendarSelect>
           <DropdownMenu
-            buttonTextProp="Наличные"
+            buttonTextProp="Оплата"
             :options="DropOptions"
             showIcon="true"
             icon="'Map.svg'"

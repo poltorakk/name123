@@ -17,7 +17,6 @@
               :placeholder="getPlaceholder()"
             />
           </div>
-          <div class="int-text-input__icon"></div>
         </div>
       </div>
       <span class="main-int-input__below text-small-regular"

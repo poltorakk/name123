@@ -8,10 +8,6 @@
     <SliderBar></SliderBar>
     <OrderForm></OrderForm>
   </div>
-  <AdditionalSecondaryButton></AdditionalSecondaryButton>
-  <br />
-  <CalendarInput></CalendarInput>
-  <SearchInput></SearchInput>
 </template>
 
 <script setup>
@@ -23,15 +19,6 @@ const SeparatyLine = defineAsyncComponent(() =>
 );
 const OrderForm = defineAsyncComponent(() =>
   import("@/pages/MainPages/OrderForm")
-);
-const AdditionalSecondaryButton = defineAsyncComponent(() =>
-  import("@/components/AdditionalSecondaryButton")
-);
-const CalendarInput = defineAsyncComponent(() =>
-  import("@/components/CalendarInput")
-);
-const SearchInput = defineAsyncComponent(() =>
-  import("@/components/SearchInput")
 );
 </script>
 

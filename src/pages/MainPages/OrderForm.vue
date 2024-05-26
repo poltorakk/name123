@@ -1,4 +1,5 @@
 <script setup>
+import SummaryButton from "@/components/SummaryButton.vue";
 import { defineAsyncComponent } from "vue";
 const DropdownMenu = defineAsyncComponent(() =>
   import("@/components/DropdownMenu")
@@ -11,7 +12,9 @@ const CardInput = defineAsyncComponent(() => import("@/components/CardInput"));
 const DropdownImg = defineAsyncComponent(() =>
   import("@/components/DropdownImg")
 );
-
+const CardAdress = defineAsyncComponent(() =>
+  import("@/components/CardAdress")
+);
 const DropOptions = ["Онлайн"];
 </script>
 <template>
@@ -20,13 +23,15 @@ const DropOptions = ["Онлайн"];
     <div class="formStyleDiv">
       <form class="formStyle">
         <br /><br />
-
+        <div class="formStyle__inputAdress">
+          <CardAdress title="Введите" placeholder="Адрес погрузки"></CardAdress>
+          <CardAdress title="Введите" placeholder="Адрес выгрузки"></CardAdress>
+        </div>
         <DropdownImg
           buttonTextProp="Любая газель"
           buttonTextProp2="Реактивная подача 15 мин"
           :options="DropOptions"
           showIcon="true"
-          icon="Asset.svg"
         ></DropdownImg>
         <div class="formStyle__countTime">
           <AddInput></AddInput>
@@ -42,6 +47,8 @@ const DropOptions = ["Онлайн"];
           <DropdownMenu
             buttonTextProp="Наличные"
             :options="DropOptions"
+            showIcon="true"
+            icon="'Map.svg'"
           ></DropdownMenu>
         </div>
 
@@ -86,6 +93,10 @@ const DropOptions = ["Онлайн"];
     gap: 5px;
     margin: 4px;
   }
+  &__inputAdress {
+    display: flex;
+    margin: 4px;
+  }
   &__payDay {
     align-items: center;
     display: flex;
@@ -93,9 +104,12 @@ const DropOptions = ["Онлайн"];
     margin: 4px;
   }
   &__submitDiv {
-    background: linear-gradient(to top, rgba(119, 138, 57, 0.5)
-, var(--white), rgba(119, 138, 57, 0.5)
-);
+    background: linear-gradient(
+      to top,
+      rgba(119, 138, 57, 0.5),
+      var(--white),
+      rgba(119, 138, 57, 0.5)
+    );
     border-radius: 15px;
     border: 1px solid var(--action);
     padding: 20px 24px;

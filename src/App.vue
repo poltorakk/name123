@@ -1,15 +1,17 @@
 <template>
   <StylePages></StylePages>
   <SeparatyLine></SeparatyLine>
-  <SliderBar></SliderBar>
-  <OrderForm></OrderForm>
-  <br>
-  <br>
+  <br />
+  <br />
+
+  <div class="SideBar_OrderForm">
+    <SliderBar></SliderBar>
+    <OrderForm></OrderForm>
+  </div>
   <AdditionalSecondaryButton></AdditionalSecondaryButton>
-  <br>
+  <br />
   <CalendarInput></CalendarInput>
   <SearchInput></SearchInput>
-
 </template>
 
 <script setup>
@@ -40,5 +42,10 @@ body,
   min-height: 100%;
   height: 1px;
   margin: 10px 10px;
+}
+.SideBar_OrderForm {
+  display: flex;
+  gap: 5px;
+  width: 100%;
 }
 </style>

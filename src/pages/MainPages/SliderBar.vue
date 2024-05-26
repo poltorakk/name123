@@ -4,7 +4,7 @@
       <div class="carousel__item">
         <h3>{{ slide.title }}</h3>
         <div class="carousel__item__icon">
-          <img :src="slide.icon" alt="Icon">
+          <img :src="slide.icon" alt="Icon" />
         </div>
         <p>{{ slide.content }}</p>
       </div>
@@ -17,23 +17,20 @@
   </Carousel>
 </template>
 <script setup>
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 
 const slides = [
-  { id: '1', title: 'lorEmipSum333', icon: require('@/assets/img/Logo.svg'), content: 'lorEmipSum333' },
-  { id: '2', title: 'lorEmipSum333', icon: require('@/assets/img/Logo.svg'), content: 'lorEmipSum333' },
-  { id: '3', title: 'lorEmipSum333', icon: require('@/assets/img/Logo.svg'), content: 'lorEmipSum333' },
-  { id: '4', title: 'lorEmipSum333', icon: require('@/assets/img/Logo.svg'), content: 'lorEmipSum333' },
-  { id: '5', title: 'lorEmipSum333', icon: require('@/assets/img/Logo.svg'), content: 'lorEmipSum333' },
-]
-
+  { id: "1", icon: require("@/assets/img/SideBar1.png") },
+  { id: "2", icon: require("@/assets/img/SideBar2.png") },
+  { id: "3", icon: require("@/assets/img/SideBar3.png") },
+];
 </script>
 
 <style scoped>
 .slider {
   position: relative;
-  width: 50%;
+  width: 400px;
   overflow: hidden;
 }
 
@@ -55,13 +52,20 @@ const slides = [
 .controls button {
   margin: 0 5px;
 }
-
+.carousel {
+  width: 60%;
+}
 .carousel__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
+
+  &__slide {
+    width: 100px;
+    height: 100px;
+  }
 
   &__icon {
     width: 100px;

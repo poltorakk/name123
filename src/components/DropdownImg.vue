@@ -15,9 +15,11 @@
             :style="{ maskImage: iconURL }"
           ></div>
           <div class="text">
-          <span class="text-normal-regular">{{ buttonText }}</span>
-          <span class="text-normal-regular" style='{var(--action)}'>{{ buttonTextSmall }} </span>
-        </div>
+            <span class="text-normal-regular">{{ buttonText }}</span>
+            <span class="text-normal-regular" style="{var(--action)}"
+              >{{ buttonTextSmall }}
+            </span>
+          </div>
         </div>
 
         <img
@@ -38,7 +40,6 @@
             @click="selectOption(item)"
           >
             <div class="dropdown-menu__li-text">
-         
               <div
                 v-if="showIcon"
                 class="dropdown-menu__icon2"
@@ -51,11 +52,11 @@
                     : item.name || item
                 }}
               </span>
-                     
-        <img
-          :src="require('@/assets/img/GruzList.svg')"
-          class="dropdown-menu__icon-logo2"
-        />
+
+              <img
+                :src="require('@/assets/img/GruzList.svg')"
+                class="dropdown-menu__icon-logo2"
+              />
             </div>
           </li>
         </ul>
@@ -105,9 +106,10 @@ export default {
       type: String,
       default: "Select",
     },
-    buttonTextProp2:{
+    buttonTextProp2: {
       type: String,
-      default: " ",},
+      default: " ",
+    },
     size: {
       type: String,
       default: "small",
@@ -120,7 +122,7 @@ export default {
     return {
       isOpen: false,
       buttonText: this.buttonTextProp,
-      buttonTextSmall: this. buttonTextProp2,
+      buttonTextSmall: this.buttonTextProp2,
     };
   },
   watch: {
@@ -244,7 +246,7 @@ export default {
     overflow-y: auto;
     max-height: 178px;
     padding: 0 8px 0 0;
-      background: transparent;
+    background: transparent;
 
     &::-webkit-scrollbar {
       position: absolute;
@@ -325,7 +327,6 @@ export default {
   }
 
   &__li-text {
-    
     @include flexCenter(30px);
   }
 
@@ -345,11 +346,12 @@ export default {
     width: 100px;
   }
   &__icon-logo2 {
-    width: 30%;}
+    width: 30%;
+  }
 }
-.text{
-    display: flex;
-    gap:10px;
-    flex-direction: column;
+.text {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 </style>

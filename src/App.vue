@@ -8,12 +8,15 @@
     <SliderBar></SliderBar>
     <OrderForm></OrderForm>
   </div>
+  <FooterComponent></FooterComponent>
 </template>
 
 <script setup>
 import { defineAsyncComponent } from "vue";
 import StylePages from "@/components/StylePages";
 import SliderBar from "@/pages/MainPages/SliderBar";
+import FooterComponent from "@/components/FooterComponent";
+
 const SeparatyLine = defineAsyncComponent(() =>
   import("@/components/SeparatyLine")
 );

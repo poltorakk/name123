@@ -1,23 +1,15 @@
 <template>
+  <div class="cardInputBefore__icon-div">
+    <div class="cardInputBefore__icon"></div>
+  </div>
   <div class="cardInput" :class="{ 'cardInput--time': CardInputTime }">
     <div class="cardInput__text text-normal-regular">
       <div class="cardInput__title">{{ title }}</div>
       <div class="cardInput__placeholder">{{ placeholder }}</div>
     </div>
-    <IconButton
-      buttonType="default"
-      buttonSize="large"
-      icon="Time.svg"
-    ></IconButton>
   </div>
 </template>
-<script setup>
-import { defineAsyncComponent } from "vue";
-
-const IconButton = defineAsyncComponent(() =>
-  import("@/components/IconButton")
-);
-</script>
+<script setup></script>
 <script>
 export default {
   name: "IntTextInput",
@@ -40,14 +32,16 @@ export default {
 <style lang="scss" scoped>
 .cardInput {
   border: 1px solid var(--darkact);
-  border-radius: 12px;
-  background-color: var(--back);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: var(--white);
   padding: 10px 20px;
-  display: flex;
   justify-content: space-between;
-  gap: 5px;
-  height: 100%;
+  height: auto;
+  width: 100%;
+  margin-right: 2%;
   &__text {
+    font-size: 14px;
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -59,6 +53,29 @@ export default {
   &__title {
     color: var(--letters);
     font-weight: bold;
+  }
+}
+.cardInputBefore {
+  &__icon-div {
+    border: 1px solid var(--darkact);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    background-color: var(--nowhite);
+    align-items: center;
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    border-right-width: 0px;
+    height: auto;
+  }
+  &__icon {
+    height: 20px;
+    width: 15px;
+    cursor: default;
+    background: var(--darkact);
+    mask-image: url("@/assets/icons/Twoline.svg");
+    mask-size: 16px;
+    display: inline-block;
   }
 }
 .cardInput--time {

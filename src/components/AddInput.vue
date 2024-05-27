@@ -1,30 +1,35 @@
 <template>
   <div class="main-int-input">
     <div class="main-int-input__title-input">
-      <span class="main-int-input__title text-normal-regular">
-        {{ title }}
-      </span>
       <div class="int-text-input">
         <div class="int-text-input__icon-text">
           <div class="container_icons">
-            <div class="icon-button__button">
+            <div class="icon-button__button" @click="decrement()">
               <div class="icon-button__icon"></div>
             </div>
-            <div class="icon-button2__button">
+            <div class="icon-button2__button" @click="increment()">
               <div class="icon-button2__icon"></div>
             </div>
           </div>
-          <input
-            type="number"
-            class="int-text-input__input text-normal-regular"
-            :placeholder="placeholder"
-          />
+          <div class="int-text-input__all-input">
+            <span class="int-text-input__text text-normal-regular">
+              Грузчики</span
+            >
+            <input
+              type="number"
+              class="int-text-input__input text-normal-regular"
+              :placeholder="placeholder"
+              v-model="inputValue"
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { ref } from "vue";
+
 export default {
   name: "AddInput",
   props: {
@@ -40,6 +45,23 @@ export default {
       type: String,
       default: "",
     },
+  },
+  setup() {
+    const inputValue = ref(0);
+
+    const increment = () => {
+      inputValue.value += 1;
+    };
+
+    const decrement = () => {
+      inputValue.value -= 1;
+    };
+
+    return {
+      inputValue,
+      increment,
+      decrement,
+    };
   },
 };
 </script>
@@ -111,6 +133,15 @@ input[type="email"]::-webkit-outer-spin-button {
     align-items: center;
   }
 
+  &__all-input {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  &__text {
+    color: var(--letters);
+    font-weight: bold;
+  }
   &__icon {
     height: 20px;
     width: 20px;

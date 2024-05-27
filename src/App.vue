@@ -1,15 +1,13 @@
 <template>
   <StylePages></StylePages>
   <SeparatyLine></SeparatyLine>
-  <SliderBar></SliderBar>
-  <OrderForm></OrderForm>
   <br />
   <br />
-  <AdditionalSecondaryButton></AdditionalSecondaryButton>
-  <br />
-  <CalendarInput></CalendarInput>
-  <SearchInput></SearchInput>
 
+  <div class="SideBar_OrderForm">
+    <SliderBar></SliderBar>
+    <OrderForm></OrderForm>
+  </div>
   <FooterComponent></FooterComponent>
 </template>
 
@@ -25,15 +23,6 @@ const SeparatyLine = defineAsyncComponent(() =>
 const OrderForm = defineAsyncComponent(() =>
   import("@/pages/MainPages/OrderForm")
 );
-const AdditionalSecondaryButton = defineAsyncComponent(() =>
-  import("@/components/AdditionalSecondaryButton")
-);
-const CalendarInput = defineAsyncComponent(() =>
-  import("@/components/CalendarInput")
-);
-const SearchInput = defineAsyncComponent(() =>
-  import("@/components/SearchInput")
-);
 </script>
 
 <style>
@@ -43,5 +32,10 @@ body,
   min-height: 100%;
   height: 1px;
   margin: 10px 10px;
+}
+.SideBar_OrderForm {
+  display: flex;
+  gap: 5px;
+  width: 100%;
 }
 </style>

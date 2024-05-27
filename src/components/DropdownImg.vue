@@ -328,6 +328,7 @@ export default {
 
   &__li-text {
     @include flexCenter(30px);
+    justify-content: space-between;
   }
 
   &__below,

@@ -17,7 +17,6 @@
               :placeholder="getPlaceholder()"
             />
           </div>
-          <div class="int-text-input__icon"></div>
         </div>
       </div>
       <span class="main-int-input__below text-small-regular"
@@ -31,80 +30,79 @@
 </template>
 <script>
 export default {
-    name: "IntTextInput",
-    props: {
-        inputType: {
-            type: String,
-            default: "text",
-        },
-        placeholder: {
-            type: String,
-            default: "",
-        },
-        title: {
-            type: String,
-            default: "",
-        },
-        isDisabled: {
-            type: Boolean,
-            default: false,
-        },
-        description: {
-            type: String,
-            default: "",
-        },
-        descriptionAdditional: {
-            type: String,
-            default: "",
-        },
-        isSmall: {
-            type: Boolean,
-            default: false,
-        },
-        icon: {
-            type: String,
-            default: undefined,
-        },
-        modelValue: {
-            type: String,
-            required: true,
-        },
-        colorlessIcon: {
-            type: Boolean,
-            default: false,
-        },
+  name: "IntTextInput",
+  props: {
+    inputType: {
+      type: String,
+      default: "text",
     },
-    computed: {
-        iconURL() {
-            return "url('" + this.iconPath + "')";
-        },
-        iconPath() {
-            if (this.icon === "") {
-                return;
-            }
-            return "/assets/icons/" + this.icon;
-        },
+    placeholder: {
+      type: String,
+      default: "",
     },
-    methods: {
-        getPlaceholder() {
-            if (this.placeholder) {
-                return this.placeholder;
-            }
+    title: {
+      type: String,
+      default: "",
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    description: {
+      type: String,
+      default: "",
+    },
+    descriptionAdditional: {
+      type: String,
+      default: "",
+    },
+    isSmall: {
+      type: Boolean,
+      default: false,
+    },
+    icon: {
+      type: String,
+      default: undefined,
+    },
+    modelValue: {
+      type: String,
+      required: true,
+    },
+    colorlessIcon: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    iconURL() {
+      return "url('" + this.iconPath + "')";
+    },
+    iconPath() {
+      if (this.icon === "") {
+        return;
+      }
+      return "/assets/icons/" + this.icon;
+    },
+  },
+  methods: {
+    getPlaceholder() {
+      if (this.placeholder) {
+        return this.placeholder;
+      }
 
-            switch (this.inputType) {
-                case "number":
-                    return "0.00";
-                case "email":
-                    return "Enter your email";
-                case "password":
-                    return "Enter your password";
-                default:
-                    return "Enter text";
-            }
-        },
+      switch (this.inputType) {
+        case "number":
+          return "0.00";
+        case "email":
+          return "Enter your email";
+        case "password":
+          return "Enter your password";
+        default:
+          return "Enter text";
+      }
     },
+  },
 };
-
 </script>
 
 <style lang="scss" scoped>

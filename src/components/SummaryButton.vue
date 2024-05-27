@@ -1,49 +1,60 @@
 <template>
-  <button class="primary-button">
-    <img class="primary-button__icon" :src="require('@/assets/icons/Chevron right.svg')" >
-    <span class="primary-button__text text-normal-regular">
-        Button big
-    </span>
-    <img class="primary-button__icon" :src="require('@/assets/icons/Chevron right.svg')" >
+  <button class="summary-button">
+    <span class="summary-button__text text-normal-regular"> Оформить за </span>
+    <span class="summary-button__summary text-normal-regular"> 1000</span>
   </button>
 </template>
 
 <script>
 export default {
-  name: "PrimaryButton"
-}
+  name: "summaryButton",
+  props: {
+    summary: {
+      type: Array,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.primary-button {
-  background: var(--yellow-gold-point);
+.summary-button {
+  background: var(--action);
   padding: 8px 24px;
   border-radius: 10px;
-  gap: 8px;
+  gap: 2px;
   display: flex;
   align-items: center;
-  border:none;
-  width: max-content;
+  border: 1px solid var(--action);
+  flex-direction: column;
 
-  &:hover{
-    background: var(--yellow-gold-dark);
+  &:hover {
     cursor: pointer;
+    background: var(--swact);
+    box-shadow: 0px 0px 15px var(--darkact);
+    border-color: var(--shaw);
   }
 
-  &__icon{
+  &__icon {
     height: 16px;
     width: 16px;
   }
 
-  &__text{
+  &__text {
     color: var(--white);
     user-select: none;
   }
 
-  &:disabled{
+  &:disabled {
     background: var(--gray) border-box;
     color: var(--lines);
     cursor: default;
+  }
+  &__summary {
+    background: var(--swact);
+    padding: 2px 20px;
+    border-radius: 12px;
+    color: var(--white);
   }
 }
 </style>

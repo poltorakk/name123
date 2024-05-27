@@ -9,7 +9,7 @@
   <br />
   <CalendarInput></CalendarInput>
   <SearchInput></SearchInput>
-
+  <PhoneModal></PhoneModal>
   <FooterComponent></FooterComponent>
 </template>
 
@@ -18,6 +18,7 @@ import { defineAsyncComponent } from "vue";
 import StylePages from "@/components/StylePages";
 import SliderBar from "@/pages/MainPages/SliderBar";
 import FooterComponent from "@/components/FooterComponent";
+import PhoneModal from "@/components/Modal/PhoneModal";
 
 const SeparatyLine = defineAsyncComponent(() =>
   import("@/components/SeparatyLine")

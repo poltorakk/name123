@@ -1,6 +1,5 @@
 <template>
   <PhoneForm></PhoneForm>
-  <div class="Modal__Background" :style="backgroundStyles"></div>
 </template>
 <script setup>
 import { ref, onMounted } from "vue";

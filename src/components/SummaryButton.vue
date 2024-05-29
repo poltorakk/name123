@@ -27,6 +27,7 @@ export default {
   align-items: center;
   border: 1px solid var(--action);
   flex-direction: column;
+  width: 50%;
 
   &:hover {
     cursor: pointer;

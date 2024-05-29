@@ -41,7 +41,7 @@ const DropOptions = ["Онлайн", "Наличные"];
             CardInputTime="true"
             buttonType="default"
             buttonSize="large"
-            icon="Time.svg"
+            icon="Calendar.svg"
           >
           </CalendarSelect>
         </div>
@@ -97,7 +97,7 @@ const DropOptions = ["Онлайн", "Наличные"];
   align-items: center;
   display: flex;
   flex-direction: column;
-
+  margin: 4px;
   &__countTime {
     display: flex;
     gap: 5px;
@@ -106,12 +106,14 @@ const DropOptions = ["Онлайн", "Наличные"];
   &__inputAdress {
     display: flex;
     margin: 4px;
+    width: 91%;
   }
   &__payDay {
     align-items: center;
     display: flex;
     gap: 5px;
     margin: 4px;
+    width: 91%;
   }
   &__submitDiv {
     background: linear-gradient(
@@ -123,6 +125,8 @@ const DropOptions = ["Онлайн", "Наличные"];
     border-radius: 15px;
     border: 1px solid var(--action);
     padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
   }
 }
 .titleForm {

@@ -15,7 +15,10 @@
       >
         <div
           class="icon-button__icon"
-          :style="{ backgroundImage: iconURL }"
+          :style="{
+            '-webkit-mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+            'mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+          }"
         ></div>
       </div>
     </div>
@@ -114,7 +117,7 @@ export default {
   },
   computed: {
     iconURL() {
-      return "url('" + this.iconPath + "')";
+      return "url(" + this.iconPath + ")";
     },
     iconPath() {
       return "/assets/icons/" + this.icon;
@@ -233,7 +236,7 @@ export default {
 
     const computedTitle = computed(() => {
       if (!selectedDates.value.date) {
-        return "";
+        return "Сегодня";
       }
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -325,9 +328,9 @@ export default {
   }
 
   &__large &__icon {
-    height: 25px;
-    width: 25px;
-    mask-size: 20px;
+    height: 24px;
+    width: 23px;
+    mask-size: 23px;
   }
 
   &__big,
@@ -367,9 +370,9 @@ export default {
   width: 307px;
   border-radius: 12px;
   padding: 12px 16px 12px 16px;
-  color: var(--white);
+  color: var(--letters);
   gap: 12px;
-  background: var(--bars);
+  background: var(--white);
   border: 1px solid var(--lines);
   max-height: 100%;
   display: flex;
@@ -401,7 +404,7 @@ export default {
   min-width: 100%;
 }
 .__week-days {
-  color: var(--yellow-gold-500);
+  color: var(--action);
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, 1fr);
@@ -474,12 +477,12 @@ export default {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-around;
-  background: var(--bars) border-box;
+  background: var(--white) border-box;
   border: 1px solid transparent;
 }
 
 .__day:hover {
-  background: linear-gradient(var(--bars), var(--bars)) padding-box,
+  background: linear-gradient(var(--white), var(--white)) padding-box,
     var(--yellow-gold-stripe) border-box;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -584,14 +587,14 @@ export default {
     display: inline-block;
     mask-size: 12px;
     mask-image: url("../assets/icons/Check.svg");
-    background-color: var(--green-500);
+    background-color: var(--darkact);
   }
 
   .__icon-chevron-down {
     height: 17px;
     width: 17px;
     cursor: default;
-    background: var(--action);
+    background: var(--darkact);
     mask-image: url("../assets/icons/ChevronDown.svg");
     mask-size: 17px;
     display: inline-block;

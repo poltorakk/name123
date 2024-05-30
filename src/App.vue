@@ -3,11 +3,14 @@
   <SeparatyLine></SeparatyLine>
   <br />
   <br />
-
   <div class="SideBar_OrderForm">
     <SliderBar></SliderBar>
     <OrderForm></OrderForm>
   </div>
+
+  <AdvantagesBlock></AdvantagesBlock>
+  <FAGBlock></FAGBlock>
+  <FromUs></FromUs>
   <FooterComponent></FooterComponent>
 </template>
 
@@ -15,6 +18,9 @@
 import { defineAsyncComponent } from "vue";
 import StylePages from "@/components/StylePages";
 import SliderBar from "@/pages/MainPages/SliderBar";
+import FromUs from "@/pages/FromUs/FromUs";
+import FAGBlock from "@/pages/FAGBlock/FaBlock";
+import AdvantagesBlock from "@/pages/Advantages/AdvantagesBlock";
 import FooterComponent from "@/components/FooterComponent";
 
 const SeparatyLine = defineAsyncComponent(() =>

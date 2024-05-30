@@ -1,18 +1,27 @@
 <template>
-  <div class="cardInputBefore__icon-div">
+  <div class="cardInputBefore__icon-div" @click="openModal">
     <div class="cardInputBefore__icon"></div>
   </div>
-  <div class="cardInput" :class="{ 'cardInput--time': CardInputTime }">
+  <div
+    class="cardInput"
+    :class="{ 'cardInput--time': CardInputTime }"
+    @click="openModal"
+  >
     <div class="cardInput__text text-normal-regular">
       <div class="cardInput__title">{{ title }}</div>
-      <div class="cardInput__placeholder">{{ placeholder }}</div>
+      <input class="cardInput__placeholder" :value="placeholder" />
     </div>
   </div>
+  <ModalAdress ref="modal" />
 </template>
 <script setup></script>
 <script>
+import ModalAdress from "@/components/Modal/ModalAdress.vue";
 export default {
   name: "IntTextInput",
+  components: {
+    ModalAdress,
+  },
   props: {
     placeholder: {
       type: String,
@@ -27,10 +36,16 @@ export default {
       required: "true",
     },
   },
+  methods: {
+    openModal() {
+      this.$refs.modal.openModal();
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .cardInput {
+  cursor: pointer;
   border: 1px solid var(--darkact);
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -56,6 +71,7 @@ export default {
   }
 }
 .cardInputBefore {
+  cursor: pointer;
   &__icon-div {
     border: 1px solid var(--darkact);
     border-top-left-radius: 12px;

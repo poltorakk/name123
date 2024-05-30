@@ -224,8 +224,6 @@ input[type="email"]::-webkit-outer-spin-button {
 }
 
 .main-int-input {
-  height: 40px;
-
   &__title,
   &__below {
     color: var(--gray);

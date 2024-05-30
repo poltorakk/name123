@@ -36,8 +36,8 @@ const DropOptions = ["Онлайн", "Наличные"];
         <div class="formStyle__countTime">
           <AddInput></AddInput>
           <CalendarSelect
-            computedTitle="Время аренды"
-            placeholderText="Выбери время"
+            :computedTitle="computedTitle"
+            :placeholderText="placeholderText"
             CardInputTime="true"
             buttonType="default"
             buttonSize="large"
@@ -47,8 +47,9 @@ const DropOptions = ["Онлайн", "Наличные"];
         </div>
         <div class="formStyle__payDay">
           <CalendarSelect
-            computedTitle="Сегодня"
-            placeholderText="Ближайшее"
+            :selectedDates="{ date: selectedDate }"
+            :computedTitle="computedTitle"
+            :placeholderText="placeholderText"
             buttonType="default"
             buttonSize="large"
             icon="Time.svg"
@@ -58,7 +59,7 @@ const DropOptions = ["Онлайн", "Наличные"];
             buttonTextProp="Оплата"
             :options="DropOptions"
             showIcon="true"
-            icon="'Map.svg'"
+            icon="Hochel.svg"
           ></DropdownMenu>
         </div>
 
@@ -67,6 +68,8 @@ const DropOptions = ["Онлайн", "Наличные"];
             placeholder="+7-ххх-ххх-ххх"
             Inputype="text"
             title="Телефон"
+            v-model="phoneNumber"
+            v-mask="'+7-###-###-##-##'"
           ></IntTextInput>
           <SummaryButton></SummaryButton>
         </div>

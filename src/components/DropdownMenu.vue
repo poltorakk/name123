@@ -12,7 +12,10 @@
           <div
             v-if="showIcon"
             class="dropdown-menu__icon3"
-            :style="{ maskImage: iconURL }"
+            :style="{
+              '-webkit-mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+              'mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+            }"
           ></div>
           <span class="text-normal-regular">{{ buttonText }}</span>
         </div>
@@ -33,10 +36,11 @@
               <div
                 v-if="showIcon"
                 class="dropdown-menu__icon2"
-                :style="{ maskImage: iconURL }"
-              >
-                >
-              </div>
+                :style="{
+                  '-webkit-mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+                  'mask-image': `url(${require(`../assets/icons/${icon}`)})`,
+                }"
+              ></div>
               <span class="text-normal-regular">
                 {{
                   item.name && item.name.length > 11
@@ -265,20 +269,20 @@ export default {
   }
 
   &__icon2 {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     cursor: default;
     background: var(--action);
-    mask-size: 20px;
+    mask-size: 15px;
     display: inline-block;
   }
 
   &__icon3 {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     cursor: default;
     background: var(--action);
-    mask-size: 20px;
+    mask-size: 15px;
     display: inline-block;
     align-items: center;
   }

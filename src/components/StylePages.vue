@@ -8,7 +8,13 @@ const DropdownMenu = defineAsyncComponent(() =>
 );
 // const SecondaryButton = defineAsyncComponent(() => import('@/components/SecondaryButton'));
 
-const dropdownitem = ref(Array(6).fill("lorEmipSum333"));
+const dropdownitem = ref([
+  "Москва",
+  "Севастополь",
+  "Санкт-Петербург",
+  "Казань",
+  "Новосибирск",
+]);
 </script>
 
 <template>
@@ -22,6 +28,7 @@ const dropdownitem = ref(Array(6).fill("lorEmipSum333"));
         buttonTextProp="Севастополь"
         :options="dropdownitem"
         :size="medium"
+        icon="Map.svg"
       ></DropdownMenu>
       <span class="text-normal-request Header__People"> Людям </span>
       <div class="Header__RightSide">

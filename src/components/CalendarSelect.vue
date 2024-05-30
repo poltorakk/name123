@@ -236,7 +236,7 @@ export default {
 
     const computedTitle = computed(() => {
       if (!selectedDates.value.date) {
-        return "";
+        return "Сегодня";
       }
       const today = new Date();
       today.setHours(0, 0, 0, 0);

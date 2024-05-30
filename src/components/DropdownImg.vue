@@ -16,9 +16,7 @@
           ></div>
           <div class="text">
             <span class="text-normal-regular">{{ buttonText }}</span>
-            <span class="text-normal-regular" style="{var(--action)}"
-              >{{ buttonTextSmall }}
-            </span>
+            <span class="text-normal-regular">{{ buttonTextSmall }} </span>
           </div>
         </div>
 
